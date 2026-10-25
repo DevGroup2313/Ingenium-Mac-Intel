@@ -1,9 +1,9 @@
 Ingenium for Mac (Intel): build kit
 ===================================
 
-Kit made on 11 October 2026 by Ingenium's builder, from the Mac app's files
-(commit c82c9bf of yabban-maker/Ingenium-here, stored in this page on 11
-October 2026).
+This guide was made on 11 October 2026, for version 3.2, by Ingenium's
+builder. The repository now holds a later version, which BUILD_INFO.txt names;
+where this guide and README.md differ, README.md is the newer.
 
 IN BRIEF
 
@@ -175,11 +175,12 @@ shows only the desktop background, allow the app there and open it again.
 
 Ingenium's models. At the top of the Models page, the card "Ingenium's models"
 shows four houses: Velox (the fastest), Scriba (balanced; it thinks), Magister
-(the strongest this Mac can hold) and Faber (the coding model). The two
-built-in models are ready at once. Click Install on another, and the app
-downloads it from Hugging Face, checks it against its fixed fingerprint (its
-SHA-256 value), and keeps it. A download that stops resumes where it stopped.
-The figures shown for each model are its makers' own published results.
+(a larger model for hard questions, chosen to suit this Mac) and Faber (the
+coding model). The two built-in models are ready at once. Click Install on
+another, and the app downloads it from Hugging Face, checks it against its
+fixed fingerprint (its SHA-256 value), and keeps it. A download that stops
+resumes where it stopped. The figures shown for each model are its makers' own
+published results.
 
 Convert a model. A model in another form (Hugging Face's safetensors,
 PyTorch's .bin or .pt, or MLX) becomes a GGUF here: choose all the files in
@@ -210,19 +211,17 @@ same card, under Use another computer's models, and press Connect. That
 device's chat then uses this Mac's models over your home Wi-Fi, from another
 room. Keep Ingenium open here; while sharing is on, the Mac does not go to
 sleep by itself. If the Mac asks whether Ingenium may accept incoming
-connections or find devices on your local network, allow it. Nothing leaves
-your home network, and only devices with the code are answered.
+connections or find devices on your local network, allow it. Questions and
+replies go only to the computer you pair with, on the same network, and only
+devices with the code are answered. They are not encrypted, so share only on a
+network you trust, such as your home Wi-Fi. A short hello, with no code, tells
+devices on the network this computer's name and how many models it lends.
 
 8. YOUR COPY ON GITHUB
 
-The repository yabban-maker/Ingenium-here (private) holds the same files. Keep
-it private. When this kit was made, the newest work sat on the branch
-claude/magical-darwin-ppq4pn. To make it the main version:
-
-1. Open https://github.com/yabban-maker/Ingenium-here and click Pull requests,
-   then New pull request.
-2. Set base to main and compare to claude/magical-darwin-ppq4pn.
-3. Click Create pull request twice, then Merge pull request and Confirm merge.
+If you uploaded this kit to a repository of your own (section 3), that
+repository holds the same files. Keep it private, so only you can see them (on
+GitHub: Settings, then General, then Change visibility at the bottom).
 
 9. IF SOMETHING GOES WRONG
 
@@ -242,65 +241,67 @@ macOS refuses a file | See MACOS_IF_BLOCKED.txt.
 
 10. WHAT WAS AND WAS NOT CHECKED
 
-Version 3.2 (10 October 2026) has not been built on GitHub yet: GitHub's build
-machines were not available when this kit was made, so these build files have
-not been run in the cloud for 3.2, and no 3.2 app has been tested on a Mac.
-What was checked for 3.2, on a Linux computer: the app's own code trained a
-small model from zero with llama.cpp's trainer (release b11321, compiled with
-this kit's own settings): two passes over about 27,000 characters took about 8
-seconds, the loss fell after each pass, and the app's engine then continued a
-sentence with the trained model; the Train a small model from zero lesson
-passed 21 checks against the real trainer and engine, including training
-further and closing its window while it trains; the app's page passed its
-tests in Chromium on Linux, with the real engine (llama.cpp) running LFM2.5
-1.2B Instruct where a model was needed: Ingenium's ten rules reach every
-model's instructions (20 checks) and come before the person's own layer (9
-checks); tooltips above each control, in each page's own colours and font (15
-checks); the new sticky note papers, Lavender first, with their names (7
-checks); pasting from outside through the edit panel (12 checks, with a
-stand-in for the app's clipboard); the first reply no longer waits for the
-instructions (5 checks); building your own AI on top of a model (18 checks);
-the model lineup for each device (45 checks); Support (33 checks); the
-first-start downloads (24 checks); and the guided tour (22 checks). The
-converter turned LFM2.5 350M and Gemma 3 270M into F16, Q8_0 and Q4_K_M files
-identical byte for byte to those of llama.cpp's own converter and quantizer,
-in the browser, the Fire app and the computer app (27 checks each), and both
-converted models answered correctly. The trainer has not yet been compiled on
-a Mac, and the edit panel's clipboard code has not been run on a Mac. The last
-build that passed on GitHub is version 3.1: The Mac app for Intel Macs was
-built and tested on GitHub on 9 October 2026 (build 3.1.20261009.13, at commit
-9a1d9c4, on one of GitHub's Intel Macs with macOS 15): with no window open,
-the app's own engine loaded LFM2.5 1.2B Instruct, answered "Paris" to "What is
-the capital of France?" and refused a request without the session's key, and
-Qwen3.5 2B thought before answering "Is 91 a prime number?". The build checked
-every program file in the app and found none that needs a macOS newer than
-13.3. The app alone, without its models (about 29 MB, the main download),
-started and ran its engine; it downloads its models the first time it opens.
-Lending its models: the app opened its door on the network (192.168.64.2, port
-17860), refused a wrong pairing code, and answered "Paris" through the door,
-its first word arriving after about 0.25 seconds. Given Velox's speed-up file,
-the app left it unused, as intended on a Mac whose engine runs on the
-processor. Speeds on that machine are rough (19.8 and 19.5 tokens a second in
-two runs of the same answer). This build is version 3.1 and carries the look
-approved on 9 October 2026: chat bubbles that rise into place with a small
-spring when they first appear, lift under the pointer and breathe gently while
-an answer is being written (minimal motion and the system's reduce-motion
-setting turn this off); the raised 3D look with light shadows; and no purple
-glow around the door's seal, the purple keys or the app's icon, by day or by
-night. The look was checked in Chromium on Linux in day and night, on a
-computer screen and a phone screen. The guided tour (22 checks), Support (33
-checks), the first-start downloads (24 checks) and the live thinking view (10
-checks) were tested again in Chromium on Linux on this page. The local build
-script, "Build Mac App.command", was run on 8 October 2026 (at commit 598817c)
-on one of GitHub's Intel Macs with macOS 15.7.9, from a folder laid out as
-this kit gives it, with only Apple's own Python (3.9.6) and command line
-tools, and with the finished icon taken away: it made the icon from the seal's
-image, installed its build tools in 26 seconds, compiled the engine for that
-Mac in about 8.5 minutes, downloaded the built-in models, assembled the app,
-and placed it on the Desktop, where its own engine answered "Paris"; the whole
-first build took about 12.5 minutes. Since that run, the script writes its own
-build number (3.1, the day and the time) into the page and the app before it
-assembles the app; that step was checked on Linux with the same commands, not
-on a Mac, and if it fails the script carries on without the number. The app's
-window has not been opened on a real Mac, and the script has not yet been
-confirmed on the owner's MacBook.
+This section records the checks as they stood when this guide was made, on 11
+October 2026. Later versions have been built and tested on GitHub since; the
+repository's Actions and Releases pages show each build. Version 3.2 (10
+October 2026) had not been built on GitHub yet: GitHub's build machines were
+not available, so these build files had not been run in the cloud for 3.2, and
+no 3.2 app had been tested on a Mac. What was checked for 3.2, on a Linux
+computer: the app's own code trained a small model from zero with llama.cpp's
+trainer (release b11321, compiled with this kit's own settings): two passes
+over about 27,000 characters took about 8 seconds, the loss fell after each
+pass, and the app's engine then continued a sentence with the trained model;
+the Train a small model from zero lesson passed 21 checks against the real
+trainer and engine, including training further and closing its window while it
+trains; the app's page passed its tests in Chromium on Linux, with the real
+engine (llama.cpp) running LFM2.5 1.2B Instruct where a model was needed:
+Ingenium's ten rules reach every model's instructions (20 checks) and come
+before the person's own layer (9 checks); tooltips above each control, in each
+page's own colours and font (15 checks); the new sticky note papers, Lavender
+first, with their names (7 checks); pasting from outside through the edit
+panel (12 checks, with a stand-in for the app's clipboard); the first reply no
+longer waits for the instructions (5 checks); building your own AI on top of a
+model (18 checks); the model lineup for each device (45 checks); Support (33
+checks); the first-start downloads (24 checks); and the guided tour (22
+checks). The converter turned LFM2.5 350M and Gemma 3 270M into F16, Q8_0 and
+Q4_K_M files identical byte for byte to those of llama.cpp's own converter and
+quantizer, in the browser, the Fire app and the computer app (27 checks each),
+and both converted models answered correctly. The trainer had not yet been
+compiled on a Mac, and the edit panel's clipboard code had not been run on a
+Mac. The last build that had passed on GitHub then was version 3.1: The Mac
+app for Intel Macs was built and tested on GitHub on 9 October 2026 (build
+3.1.20261009.13, at commit 9a1d9c4, on one of GitHub's Intel Macs with macOS
+15): with no window open, the app's own engine loaded LFM2.5 1.2B Instruct,
+answered "Paris" to "What is the capital of France?" and refused a request
+without the session's key, and Qwen3.5 2B thought before answering "Is 91 a
+prime number?". The build checked every program file in the app and found none
+that needs a macOS newer than 13.3. The app alone, without its models (about
+29 MB, the main download), started and ran its engine; it downloads its models
+the first time it opens. Lending its models: the app opened its door on the
+network (192.168.64.2, port 17860), refused a wrong pairing code, and answered
+"Paris" through the door, its first word arriving after about 0.25 seconds.
+Given Velox's speed-up file, the app left it unused, as intended on a Mac
+whose engine runs on the processor. Speeds on that machine are rough (19.8 and
+19.5 tokens a second in two runs of the same answer). This build is version
+3.1 and carries the look approved on 9 October 2026: chat bubbles that rise
+into place with a small spring when they first appear, lift under the pointer
+and breathe gently while an answer is being written (minimal motion and the
+system's reduce-motion setting turn this off); the raised 3D look with light
+shadows; and no purple glow around the door's seal, the purple keys or the
+app's icon, by day or by night. The look was checked in Chromium on Linux in
+day and night, on a computer screen and a phone screen. The guided tour (22
+checks), Support (33 checks), the first-start downloads (24 checks) and the
+live thinking view (10 checks) were tested again in Chromium on Linux on this
+page. The local build script, "Build Mac App.command", was run on 8 October
+2026 (at commit 598817c) on one of GitHub's Intel Macs with macOS 15.7.9, from
+a folder laid out as this kit gives it, with only Apple's own Python (3.9.6)
+and command line tools, and with the finished icon taken away: it made the
+icon from the seal's image, installed its build tools in 26 seconds, compiled
+the engine for that Mac in about 8.5 minutes, downloaded the built-in models,
+assembled the app, and placed it on the Desktop, where its own engine answered
+"Paris"; the whole first build took about 12.5 minutes. Since that run, the
+script writes its own build number (3.1, the day and the time) into the page
+and the app before it assembles the app; that step was checked on Linux with
+the same commands, not on a Mac, and if it fails the script carries on without
+the number. The app's window had not been opened on a real Mac, and the script
+has not yet been confirmed on the owner's MacBook.
